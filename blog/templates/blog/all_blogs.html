@@ -1,0 +1,10 @@
+{% extends 'portfolio/base.html' %} {% block content %}
+<h1>BLOGS</h1>
+
+<h2>I have {{ blogs.count }} blog{{ blogs.count|pluralize }}</h2>
+
+{% for blog in blogs %}
+<a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+<h3>{{ blog.date|date:'d F Y' }}</h3>
+<p>{{ blog.post|striptags|truncatechars:100 }}</p>
+{% endfor %} {% endblock %}
